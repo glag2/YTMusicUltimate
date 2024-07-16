@@ -55,7 +55,7 @@ jobs:
         if: steps.SDK.outputs.cache-hit != 'true'
         uses: actions/checkout@v4
         with:
-          repository: arichorn/sdks
+          repository: xybp888/iOS-SDKs
           path: sdks
           sparse-checkout: iPhoneOS16.2.sdk
           persist-credentials: false
