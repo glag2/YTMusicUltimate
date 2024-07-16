@@ -1,3 +1,6 @@
+# I modified the github action from @arichornlover 's uYouEnhanced repo, but the original idea is by @ISnackable. Thanks to both of them!
+# https://github.com/ISnackable/YTCubePlus/blob/main/.github/workflows/Build.yml
+
 name: Build and Release YTMusicUltimate
 
 on:
@@ -30,6 +33,7 @@ jobs:
       - name: Install Dependencies
         run: brew install ldid dpkg make
               
+
       - name: Set PATH environment variable
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH 
 
@@ -61,7 +65,6 @@ jobs:
           mv *.sdk $THEOS/sdks
         env:
           THEOS: ${{ github.workspace }}/theos
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Theos Jailed
         uses: actions/checkout@v4.1.1
@@ -87,6 +90,7 @@ jobs:
         id: prepare_youtube_music
         run: |
           wget "$YOUTUBE_MUSIC_URL" --no-verbose -O main/YouTubeMusic.ipa
+
         env:
           YOUTUBE_MUSIC_URL: ${{ inputs.decrypted_youtube_music_url }}    
 
